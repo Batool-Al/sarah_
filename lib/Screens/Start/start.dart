@@ -24,13 +24,14 @@ class _StartScreenState extends State<StartScreen> {
   Widget build(BuildContext context) {
     return  SplashScreen(
       backgroundColor: Color(0xFFE8EAF6),
-      seconds:4,
+      seconds:8,
       image: Image.asset('assets/images/animation_500_kl9sufq2.gif'),
       photoSize: 250,
       useLoader: true,
       loadingText: Text(
-        '"" Welcome To\nATS System ""', style: TextStyle(
-          color: Colors.deepOrange[300], fontFamily: 'NotoSerif-Bold',fontSize: 35,
+        ' ATS\n     System ', style: TextStyle(
+          color: Colors.indigo[500], fontFamily: 'NotoSerif-Bold',fontSize: 35,
+
           shadows: [
             Shadow(
               offset: Offset(4.0,1.0),
@@ -39,7 +40,8 @@ class _StartScreenState extends State<StartScreen> {
             )]
       ),
       ),
-      loaderColor: Colors.red[300] ,
+      loaderColor: Colors.purple[400] ,
+
       navigateAfterSeconds: WelcomeScreen(),
     );
   }
