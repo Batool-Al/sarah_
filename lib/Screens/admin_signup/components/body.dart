@@ -74,7 +74,7 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return login_screen2();
+                      return LoginScreen2();
                     },
                   ),
                 );

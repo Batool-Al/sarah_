@@ -7,7 +7,7 @@ class PasswordInput extends StatelessWidget {
     @required this.icon,
     @required this.hint,
     this.inputType,
-    this.inputAction,
+    this.inputAction, TextEditingController controller,
   }) : super(key: key);
 
   final IconData icon;

@@ -8,9 +8,21 @@ import 'package:flutter_login_purple/components/rounded_button.dart';
 import 'package:flutter_login_purple/components/rounded_input_field.dart';
 import 'package:flutter_login_purple/components/rounded_small_input_field.dart';
 import 'package:flutter_login_purple/components/rounded_password_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+class Body extends StatefulWidget {
+  @override
+  _BodyState createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _repasswordController = TextEditingController();
 
 
-class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -18,7 +30,6 @@ class Body extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-
           children: <Widget>[
             SizedBox(height: 100),
             Row(
@@ -50,8 +61,9 @@ class Body extends StatelessWidget {
               inputType: TextInputType.emailAddress,
               inputAction: TextInputAction.next,
             ),
+
             SizedBox(height: size.height * 0.01),
-            drop(),
+            Drop(),
             SizedBox(height: size.height * 0.01),
             PasswordInput(
               icon: Icons.lock_outline,
@@ -66,7 +78,25 @@ class Body extends StatelessWidget {
             SizedBox(height: size.height * 0.01),
             RoundedButton(
               text: "SIGNUP",
-              press: () {},
+              press: () async {
+              //   try{
+              //     User user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
+              //         email: _emailController.text, password: _passwordController.text,)).user;
+              //   if(user != null){
+              //   UserUpdateInfo updateUser = UserUpdateInfo();
+              //   updateUser.displayName = _usernameController.text;
+              //   user.updateProfile(updateUser);
+              //   Navigator.pushNamed(context, "/Welcome");
+              //   }
+              //   } catch (e) {
+              //   print(e);
+              //   _usernameController.text = "";
+              //   _passwordController.text = "";
+              //   _repasswordController.text = "";
+              //   _emailController.text = "";
+              //   // TODO: alertdialog with error
+              //   }
+               },
             ),
             SizedBox(height: size.height * 0.01),
             AlreadyHaveAnAccountCheck(
@@ -89,12 +119,12 @@ class Body extends StatelessWidget {
     );
   }
 }
-class drop extends StatefulWidget {
+class Drop extends StatefulWidget {
   @override
-  _dropState createState() => _dropState();
+  _DropState createState() => _DropState();
 }
 
-class _dropState extends State<drop> {
+class _DropState extends State<Drop> {
   String currentItemSelected ;
   String nameCity = "";
   List listItem = ["ITC", "Business", "English Literature"];
