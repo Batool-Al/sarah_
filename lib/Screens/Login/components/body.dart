@@ -7,20 +7,12 @@ import 'package:flutter_login_purple/components/rounded_button.dart';
 import 'package:flutter_login_purple/components/rounded_input_field.dart';
 import 'package:flutter_login_purple/components/rounded_password_field.dart';
 import 'package:lottie/lottie.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Body extends StatefulWidget {
+
+class Body extends StatelessWidget {
   const Body({
     Key key,
   }) : super(key: key);
-  @override
-  _BodyState createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +29,6 @@ class _BodyState extends State<Body> {
                 ),
 
                 TextInputField(
-                  controller: _emailController,
                   icon: Icons.email_outlined,
                   hint: 'Email',
                   inputType: TextInputType.emailAddress,
@@ -45,7 +36,6 @@ class _BodyState extends State<Body> {
                 ),
                 Container(
                   child: PasswordInput(
-                    controller: _passwordController,
                     icon: Icons.lock,
                     hint: "Password",
                     inputAction: TextInputAction.done,
@@ -55,20 +45,7 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.all(10),
                   child: RoundedButton(
                     text: "LOGIN",
-                    press: () async {
-                        try {
-                        User user =
-                            (await FirebaseAuth.instance.signInWithEmailAndPassword(
-                              email: _emailController.text, password: _passwordController.text,)).user;
-                        if (user != null) {
-                           Navigator.pushNamed(context, "/Welcome");
-                        }
-                        } catch (e) {
-                        print(e);
-                        _emailController.text = "";
-                        _passwordController.text = "";
-                        // TODO: AlertDialog with error
-                        }
+                    press: () {
                     },
                   ),
               ),

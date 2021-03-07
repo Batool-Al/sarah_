@@ -8,20 +8,9 @@ import 'package:flutter_login_purple/components/rounded_button.dart';
 import 'package:flutter_login_purple/components/rounded_input_field.dart';
 import 'package:flutter_login_purple/components/rounded_small_input_field.dart';
 import 'package:flutter_login_purple/components/rounded_password_field.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
-class Body extends StatefulWidget {
-  @override
-  _BodyState createState() => _BodyState();
-}
 
-class _BodyState extends State<Body> {
-  final _formKey = GlobalKey<FormState>();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
-  TextEditingController _repasswordController = TextEditingController();
-
+class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -78,24 +67,7 @@ class _BodyState extends State<Body> {
             SizedBox(height: size.height * 0.01),
             RoundedButton(
               text: "SIGNUP",
-              press: () async {
-              //   try{
-              //     User user = (await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              //         email: _emailController.text, password: _passwordController.text,)).user;
-              //   if(user != null){
-              //   UserUpdateInfo updateUser = UserUpdateInfo();
-              //   updateUser.displayName = _usernameController.text;
-              //   user.updateProfile(updateUser);
-              //   Navigator.pushNamed(context, "/Welcome");
-              //   }
-              //   } catch (e) {
-              //   print(e);
-              //   _usernameController.text = "";
-              //   _passwordController.text = "";
-              //   _repasswordController.text = "";
-              //   _emailController.text = "";
-              //   // TODO: alertdialog with error
-              //   }
+              press: () {
                },
             ),
             SizedBox(height: size.height * 0.01),
